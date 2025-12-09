@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import theme from "@/theme/theme";
-import "@/services/firebase";
+import AuthProvider from "@/context/AuthContext";
 
 export const metadata: Metadata = {
     title: "CitySphere - Explore Your City",
@@ -21,7 +21,9 @@ export default function RootLayout({
         <body>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            {children}
+            <AuthProvider>
+                {children}
+            </AuthProvider>
         </ThemeProvider>
         </body>
         </html>

@@ -1,18 +1,33 @@
 "use client";
 
 import { Box, Container, Typography } from "@mui/material";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 
-export default function GalleryPage() {
+function GalleryPage() {
   return (
-    <Container>
-      <Box sx={{ py: 8 }}>
-        <Typography variant="h3" gutterBottom>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <Navbar />
+      
+      <Container sx={{ py: 8, flex: 1 }}>
+        <Typography variant="h3" fontWeight={700} gutterBottom>
           Gallery
         </Typography>
-        <Typography variant="body1">
-          Coming soon...
+        <Typography variant="body1" color="text.secondary">
+          Explore beautiful city images. Coming soon...
         </Typography>
-      </Box>
-    </Container>
+      </Container>
+
+      <Footer />
+    </Box>
+  );
+}
+
+export default function GalleryPageWrapper() {
+  return (
+    <ProtectedRoute>
+      <GalleryPage />
+    </ProtectedRoute>
   );
 }

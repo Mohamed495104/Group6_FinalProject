@@ -18,6 +18,20 @@ CitySphere is a modern, mobile-first city exploration web application designed t
 
 - Node.js 18+ and npm
 - MongoDB (optional, for backend)
+- Firebase project (for authentication)
+
+### Firebase Setup
+
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Enable Email/Password authentication in Firebase Authentication
+3. Copy your Firebase configuration
+4. Create a `.env.local` file in the `frontend` directory:
+
+```bash
+cp frontend/.env.local.example frontend/.env.local
+```
+
+5. Fill in your Firebase credentials in `.env.local`
 
 ### Frontend Setup
 
@@ -82,19 +96,31 @@ citysphere/
 ### Current Implementation
 
 - ✅ Landing Page with modern gradient hero section
-- ✅ Responsive Navbar with mobile drawer
+- ✅ Responsive Navbar with mobile drawer and authentication state
 - ✅ Footer with quick links
 - ✅ Global theme and styling system
-- ✅ Placeholder pages for future features
+- ✅ **Firebase Authentication (Login/Signup)**
+- ✅ **Protected Routes for authenticated users**
+- ✅ **Public Explore page with limited guest access**
+- ✅ **User profile management with MongoDB**
+- ✅ AuthContext for global authentication state
+
+### Authentication Features
+
+- 🔐 Email/Password authentication via Firebase
+- 🔐 User registration with name, email, and password
+- 🔐 Secure login with password visibility toggle
+- 🔐 User data stored in MongoDB (Firebase UID, email, name)
+- 🔐 Protected routes redirect to login if not authenticated
+- 🔐 Public explore page with sign-in prompts for locked features
+- 🔐 User avatar and logout in navbar when authenticated
 
 ### Planned Features
 
-- 🔲 User Authentication (Login/Signup)
-- 🔲 Protected Routes
-- 🔲 Explore Page with categories (Food, Parks, Culture, etc.)
+- 🔲 Explore Page with full category functionality (Food, Parks, Culture, etc.)
 - 🔲 Top Spots showcase
 - 🔲 Visual Gallery
-- 🔲 Contact & Support form
+- 🔲 Contact & Support form with backend integration
 
 ## 🛠 Available Scripts
 

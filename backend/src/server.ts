@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { connectDB } from "./config/db";
-import supportRoutes from "./routes/supportRoutes";
+import { connectDB } from "./config/db.js";
+import supportRoutes from "./routes/supportRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/support", supportRoutes);
+app.use("/api/users", userRoutes);
 
 // Health check route
 app.get("/api/health", (req, res) => {
