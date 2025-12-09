@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import SupportMessage from "../models/SupportMessage.js";
+import SupportMessage from "../models/SupportMessage";
 
 export const createSupportMessage = async (req: Request, res: Response) => {
   try {

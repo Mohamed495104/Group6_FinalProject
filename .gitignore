@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
 package-lock.json
+# Firebase private key
+backend/src/config/serviceAccount.json
 
 # Next.js
 frontend/.next/
