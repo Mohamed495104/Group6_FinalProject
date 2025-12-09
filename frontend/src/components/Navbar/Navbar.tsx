@@ -29,7 +29,6 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { label: "Home", href: "/home" },
     { label: "Explore", href: "/explore" },
     { label: "Top Spots", href: "/top-spots" },
     { label: "Gallery", href: "/gallery" },

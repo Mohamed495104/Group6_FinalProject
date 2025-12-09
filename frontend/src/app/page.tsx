@@ -25,7 +25,7 @@ export default function LandingPage() {
           justifyContent: "center",
           textAlign: "center",
           px: 2,
-          background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #0d47a1 50%, ${theme.palette.secondary.main} 100%)`,
+          background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 50%, ${theme.palette.secondary.main} 100%)`,
           position: "relative",
           overflow: "hidden",
         }}

@@ -5,6 +5,7 @@ const theme = createTheme({
     palette: {
         primary: {
             main: "#1A73E8",   // City Blue
+            dark: "#0d47a1",   // Darker blue for gradients
         },
         secondary: {
             main: "#FF7043",   // Sunset Orange

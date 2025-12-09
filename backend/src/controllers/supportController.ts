@@ -5,17 +5,18 @@ export const createSupportMessage = async (req: Request, res: Response) => {
   try {
     const { name, email, message } = req.body;
 
-    if (!name || !email || !message) {
+    // Validate required fields with trimming
+    if (!name?.trim() || !email?.trim() || !message?.trim()) {
       return res.status(400).json({
         success: false,
-        message: "Please provide name, email, and message",
+        message: "Please provide valid name, email, and message",
       });
     }
 
     const supportMessage = new SupportMessage({
-      name,
-      email,
-      message,
+      name: name.trim(),
+      email: email.trim(),
+      message: message.trim(),
     });
 
     await supportMessage.save();

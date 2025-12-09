@@ -39,14 +39,6 @@ export default function Footer() {
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
               <MuiLink
                 component={Link}
-                href="/home"
-                color="inherit"
-                underline="hover"
-              >
-                Home
-              </MuiLink>
-              <MuiLink
-                component={Link}
                 href="/explore"
                 color="inherit"
                 underline="hover"
