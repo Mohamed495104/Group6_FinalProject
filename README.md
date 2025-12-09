@@ -17,41 +17,122 @@ CitySphere is a modern, mobile-first city exploration web application designed t
 ### Prerequisites
 
 - Node.js 18+ and npm
-- MongoDB (optional, for backend)
+- MongoDB (local installation or MongoDB Atlas account)
 - Firebase project (for authentication)
 
-### Firebase Setup
-
-1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
-2. Enable Email/Password authentication in Firebase Authentication
-3. Copy your Firebase configuration
-4. Create a `.env.local` file in the `frontend` directory:
+### Step 1: Clone the Repository
 
 ```bash
-cp frontend/.env.local.example frontend/.env.local
+git clone <repository-url>
+cd Group6_FinalProject
 ```
 
-5. Fill in your Firebase credentials in `.env.local`
+### Step 2: Firebase Setup
 
-### Frontend Setup
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Enable **Email/Password** authentication in Firebase Authentication
+3. Go to Project Settings → General → Your apps
+4. Copy your Firebase configuration values
 
+### Step 3: Environment Configuration
+
+#### Frontend Environment Setup
+
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
+
+2. Create `.env.local` from the example file:
+```bash
+cp .env.local.example .env.local
+```
+
+3. Edit `.env.local` and fill in your Firebase credentials:
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_actual_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_actual_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_actual_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_actual_app_id
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
+
+#### Backend Environment Setup
+
+1. Navigate to the backend directory:
+```bash
+cd ../backend
+```
+
+2. Create `.env` from the example file:
+```bash
+cp .env.example .env
+```
+
+3. Edit `.env` and configure your MongoDB connection:
+```env
+PORT=5000
+NODE_ENV=development
+MONGODB_URI=mongodb://localhost:27017/citysphere
+# OR for MongoDB Atlas:
+# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/citysphere
+```
+
+### Step 4: Install Dependencies
+
+#### Install Frontend Dependencies
 ```bash
 cd frontend
 npm install
-npm run dev
 ```
 
-The frontend will be available at `http://localhost:3000`
+#### Install Backend Dependencies
+```bash
+cd ../backend
+npm install
+```
 
-### Backend Setup
+### Step 5: Run the Application
 
+#### Start the Backend Server
 ```bash
 cd backend
-npm install
 npm run dev
 ```
-
 The backend API will be available at `http://localhost:5000`
+
+#### Start the Frontend Server (in a new terminal)
+```bash
+cd frontend
+npm run dev
+```
+The frontend will be available at `http://localhost:3000`
+
+### Step 6: Verify Setup
+
+1. Open your browser and navigate to `http://localhost:3000`
+2. You should see the CitySphere landing page
+3. Click "Sign Up" to create a new account
+4. After registration, you'll be redirected to the Explore page
+5. Your user data is stored in both Firebase (authentication) and MongoDB (profile)
+
+### Troubleshooting
+
+**Firebase Connection Issues:**
+- Verify all Firebase environment variables are correctly set
+- Check that Email/Password authentication is enabled in Firebase Console
+
+**MongoDB Connection Issues:**
+- Ensure MongoDB is running locally, or
+- Verify your MongoDB Atlas connection string is correct
+- Check that your IP address is whitelisted in MongoDB Atlas
+
+**Backend API Issues:**
+- Verify the backend is running on port 5000
+- Check console for any error messages
+- Ensure `.env` file exists in the backend directory
 
 ## 📁 Project Structure
 

@@ -57,10 +57,10 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { label: "Explore", href: "/explore" },
-    { label: "Top Spots", href: "/top-spots" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "Contact", href: "/contact" },
+    { label: "Explore", href: "/explore", public: true },
+    { label: "Top Spots", href: "/top-spots", public: false },
+    { label: "Gallery", href: "/gallery", public: false },
+    { label: "Contact", href: "/contact", public: true },
   ];
 
   const drawer = (
@@ -69,17 +69,19 @@ export default function Navbar() {
         CitySphere
       </Typography>
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item.label} disablePadding>
-            <ListItemButton
-              component={Link}
-              href={item.href}
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {navItems
+          .filter((item) => item.public || user)
+          .map((item) => (
+            <ListItem key={item.label} disablePadding>
+              <ListItemButton
+                component={Link}
+                href={item.href}
+                sx={{ textAlign: "center" }}
+              >
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         {!user && (
           <ListItem disablePadding>
             <ListItemButton
@@ -124,16 +126,18 @@ export default function Navbar() {
             </IconButton>
           ) : (
             <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-              {navItems.map((item) => (
-                <Button
-                  key={item.label}
-                  component={Link}
-                  href={item.href}
-                  sx={{ color: "white" }}
-                >
-                  {item.label}
-                </Button>
-              ))}
+              {navItems
+                .filter((item) => item.public || user)
+                .map((item) => (
+                  <Button
+                    key={item.label}
+                    component={Link}
+                    href={item.href}
+                    sx={{ color: "white" }}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
               
               {user ? (
                 <>
