@@ -1,0 +1,24 @@
+.section {
+    padding: 40px 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.hero {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.text-muted {
+    color: #4A4A4A;
+}
