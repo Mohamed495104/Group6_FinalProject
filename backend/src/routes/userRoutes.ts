@@ -1,5 +1,5 @@
 import express from "express";
-import { createOrUpdateUser, getUserByFirebaseUid } from "../controllers/userController.js";
+import { createOrUpdateUser, getUserByFirebaseUid } from "../controllers/userController";
 
 const router = express.Router();
 
