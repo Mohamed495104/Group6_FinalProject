@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/support", supportRoutes);
 app.use("/api/users", userRoutes);
 
-// Health check route
+// Health check routes
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Server is running" });
 });
