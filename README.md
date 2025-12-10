@@ -108,31 +108,7 @@ The backend API will be available at `http://localhost:5000`
 cd frontend
 npm run dev
 ```
-The frontend will be available at `http://localhost:3000`
-
-### Step 6: Verify Setup
-
-1. Open your browser and navigate to `http://localhost:3000`
-2. You should see the CitySphere landing page
-3. Click "Sign Up" to create a new account
-4. After registration, you'll be redirected to the Explore page
-5. Your user data is stored in both Firebase (authentication) and MongoDB (profile)
-
-### Troubleshooting
-
-**Firebase Connection Issues:**
-- Verify all Firebase environment variables are correctly set
-- Check that Email/Password authentication is enabled in Firebase Console
-
-**MongoDB Connection Issues:**
-- Ensure MongoDB is running locally, or
-- Verify your MongoDB Atlas connection string is correct
-- Check that your IP address is whitelisted in MongoDB Atlas
-
-**Backend API Issues:**
-- Verify the backend is running on port 5000
-- Check console for any error messages
-- Ensure `.env` file exists in the backend directory
+The frontend will be available at `http://localhost:3000
 
 ## 📁 Project Structure
 
@@ -220,7 +196,7 @@ citysphere/
 
 ## 📝 License
 
-This project is part of a university course assignment.
+This project is part of a college assignment.
 
 ---
 
