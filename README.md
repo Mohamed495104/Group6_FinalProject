@@ -6,7 +6,6 @@ CitySphere is a modern, mobile-first city exploration web application designed t
 
 ## 🎯 Project Overview
 
-- **Project Type**: Single Page Application (SPA)
 - **Frontend**: Next.js 14+ (React + TypeScript), Material UI
 - **Backend**: Node.js, Express, MongoDB (minimal API)
 - **Authentication**: Firebase Authentication
