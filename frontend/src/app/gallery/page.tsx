@@ -49,7 +49,7 @@ const galleryImages = [
   },
   {
     id: 4,
-    img: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800",
+    img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800",
     title: "Downtown Streets",
     category: "Streets",
     rows: 1,
@@ -81,7 +81,7 @@ const galleryImages = [
   },
   {
     id: 8,
-    img: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800",
+    img: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800",
     title: "City Center",
     category: "Streets",
     rows: 1,
@@ -89,7 +89,7 @@ const galleryImages = [
   },
   {
     id: 9,
-    img: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800",
+    img: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800",
     title: "Evening Glow",
     category: "Night",
     rows: 1,
@@ -105,7 +105,7 @@ const galleryImages = [
   },
   {
     id: 11,
-    img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800",
+    img: "https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=800",
     title: "Harbor Front",
     category: "Landmarks",
     rows: 2,
