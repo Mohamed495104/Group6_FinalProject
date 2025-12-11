@@ -175,7 +175,7 @@ function TopSpotsPage() {
           {/* Spots Grid */}
           <Grid container spacing={4}>
             {topSpots.map((spot) => (
-              <Grid item xs={12} sm={6} md={4} key={spot.id}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={spot.id}>
                 <Card
                   sx={{
                     height: "100%",

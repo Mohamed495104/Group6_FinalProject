@@ -93,7 +93,7 @@ export default function ContactPage() {
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             {/* Contact Form */}
-            <Grid item xs={12} md={7}>
+            <Grid size={{ xs: 12, md: 7 }}>
               <Card sx={{ p: 4 }}>
                 <Typography variant="h5" fontWeight={700} gutterBottom>
                   Send us a Message
@@ -116,7 +116,7 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSubmit}>
                   <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="Name"
@@ -126,7 +126,7 @@ export default function ContactPage() {
                         required
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="Email"
@@ -137,7 +137,7 @@ export default function ContactPage() {
                         required
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <TextField
                         fullWidth
                         label="Subject"
@@ -146,7 +146,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <TextField
                         fullWidth
                         label="Message"
@@ -158,7 +158,7 @@ export default function ContactPage() {
                         required
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <Button
                         type="submit"
                         variant="contained"
@@ -175,7 +175,7 @@ export default function ContactPage() {
             </Grid>
 
             {/* Contact Information */}
-            <Grid item xs={12} md={5}>
+            <Grid size={{ xs: 12, md: 5 }}>
               <Card sx={{ p: 4, mb: 3, backgroundColor: theme.palette.primary.main, color: "white" }}>
                 <Typography variant="h5" fontWeight={700} gutterBottom>
                   Contact Information

@@ -111,7 +111,7 @@ const featuredSpots = [
 export default function ExplorePage() {
   const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState<typeof categories[0] | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState('popular');
 
@@ -145,7 +145,7 @@ export default function ExplorePage() {
     return result;
   }, [searchQuery, selectedCategory, sortBy]);
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = (category: typeof categories[0]) => {
     // Toggle category selection
     if (selectedCategory?.id === category.id) {
       setSelectedCategory(null);

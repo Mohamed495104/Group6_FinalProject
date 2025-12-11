@@ -100,7 +100,7 @@ function HomePage() {
               {featureCards.map((feature, index) => {
                 const IconComponent = feature.icon;
                 return (
-                  <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                     <Card
                       sx={{
                         height: "100%",
@@ -154,7 +154,7 @@ function HomePage() {
                 Based on your interests and location, we recommend exploring:
               </Typography>
               <Grid container spacing={2}>
-                <Grid item xs={12} md={4}>
+                <Grid size={{ xs: 12, md: 4 }}>
                   <Box sx={{ p: 2, borderRadius: 2, backgroundColor: "#f8f9fa" }}>
                     <Typography variant="h6" fontWeight={600} gutterBottom>
                       Food & Dining
@@ -164,7 +164,7 @@ function HomePage() {
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid size={{ xs: 12, md: 4 }}>
                   <Box sx={{ p: 2, borderRadius: 2, backgroundColor: "#f8f9fa" }}>
                     <Typography variant="h6" fontWeight={600} gutterBottom>
                       Parks & Nature
@@ -174,7 +174,7 @@ function HomePage() {
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid size={{ xs: 12, md: 4 }}>
                   <Box sx={{ p: 2, borderRadius: 2, backgroundColor: "#f8f9fa" }}>
                     <Typography variant="h6" fontWeight={600} gutterBottom>
                       Arts & Culture
@@ -196,7 +196,7 @@ function HomePage() {
             </Typography>
             <Grid container spacing={2}>
               {cityFacts.map((fact, index) => (
-                <Grid item xs={12} sm={6} key={index}>
+                <Grid size={{ xs: 12, sm: 6 }} key={index}>
                   <Card
                     sx={{
                       p: 2,
