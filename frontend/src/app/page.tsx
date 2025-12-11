@@ -2,14 +2,26 @@
 
 import { Box, Button, Container, Typography, useTheme } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import ExploreIcon from "@mui/icons-material/Explore";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LandingPage() {
   const theme = useTheme();
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  // Redirect authenticated users to home page
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/home");
+    }
+  }, [user, loading, router]);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>

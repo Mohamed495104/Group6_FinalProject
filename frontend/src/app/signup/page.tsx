@@ -72,7 +72,7 @@ export default function SignupPage() {
         // Continue even if DB save fails - user is created in Firebase
       }
 
-      router.push("/explore");
+      router.push("/home");
     } catch (err: any) {
       if (err.code === "auth/email-already-in-use") {
         setError("This email is already registered. Please sign in instead.");
