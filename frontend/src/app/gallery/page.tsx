@@ -1,5 +1,12 @@
 "use client";
 
+/**
+ * Gallery Page - City Photo Collection
+ * Displays curated high-quality city images in a responsive masonry grid
+ * Features category filtering and lightbox viewer for immersive viewing
+ * Implements accessibility standards with keyboard navigation
+ */
+
 import { useState } from "react";
 import {
   Box,
@@ -21,100 +28,104 @@ import CloseIcon from "@mui/icons-material/Close";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-// Gallery images data
+/**
+ * Gallery Image Collection
+ * Curated selection of 12 high-quality city photographs
+ * Each image includes title, category, and masonry grid positioning
+ */
 const galleryImages = [
   {
     id: 1,
-    img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800",
-    title: "City Skyline",
+    img: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&q=80",
+    title: "CN Tower at Sunset",
     category: "Landmarks",
     rows: 2,
     cols: 2,
   },
   {
     id: 2,
-    img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800",
-    title: "Urban Architecture",
+    img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80",
+    title: "Modern Skyline",
     category: "Architecture",
     rows: 1,
     cols: 1,
   },
   {
     id: 3,
-    img: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800",
-    title: "City Lights",
+    img: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80",
+    title: "City Lights at Night",
     category: "Night",
     rows: 1,
     cols: 1,
   },
   {
     id: 4,
-    img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800",
-    title: "Downtown Streets",
+    img: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&q=80",
+    title: "Downtown Intersection",
     category: "Streets",
     rows: 1,
     cols: 2,
   },
   {
     id: 5,
-    img: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800",
-    title: "Park View",
+    img: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&q=80",
+    title: "Urban Park",
     category: "Nature",
     rows: 2,
     cols: 1,
   },
   {
     id: 6,
-    img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800",
-    title: "Modern Bridge",
+    img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80",
+    title: "Architectural Marvel",
     category: "Architecture",
     rows: 1,
     cols: 1,
   },
   {
     id: 7,
-    img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800",
-    title: "Night Traffic",
+    img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&q=80",
+    title: "Evening Traffic Flow",
     category: "Night",
     rows: 1,
     cols: 1,
   },
   {
     id: 8,
-    img: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800",
-    title: "City Center",
+    img: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&q=80",
+    title: "City Center Plaza",
     category: "Streets",
     rows: 1,
     cols: 2,
   },
   {
     id: 9,
-    img: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800",
-    title: "Evening Glow",
+    img: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800&q=80",
+    title: "Golden Hour Cityscape",
     category: "Night",
     rows: 1,
     cols: 1,
   },
   {
     id: 10,
-    img: "https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=800",
-    title: "Green Spaces",
+    img: "https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=800&q=80",
+    title: "Peaceful Park Path",
     category: "Nature",
     rows: 1,
     cols: 1,
   },
   {
     id: 11,
-    img: "https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=800",
-    title: "Harbor Front",
+    img: "https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=800&q=80",
+    title: "Waterfront Vista",
     category: "Landmarks",
     rows: 2,
     cols: 1,
   },
   {
     id: 12,
-    img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800",
-    title: "Glass Buildings",
+    img: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=800&q=80",
+    title: "Glass Tower Reflection",
     category: "Architecture",
     rows: 1,
     cols: 1,

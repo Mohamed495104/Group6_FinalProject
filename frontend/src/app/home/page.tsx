@@ -1,5 +1,15 @@
 "use client";
 
+/**
+ * Home Page - Authenticated User Dashboard
+ * Protected page accessible only to logged-in users
+ * Features:
+ * - Personalized welcome message with user's display name
+ * - Quick access feature cards for main app sections
+ * - Recommended categories based on user interests
+ * - City insights and fun facts
+ */
+
 import { Box, Container, Typography, Grid, Card, CardContent, CardActionArea, useTheme } from "@mui/material";
 import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
 import Navbar from "@/components/Navbar/Navbar";
@@ -13,9 +23,11 @@ import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 
 function HomePage() {
+  // Get authenticated user information
   const { user } = useAuth();
   const theme = useTheme();
 
+  // Quick access navigation cards
   const featureCards = [
     {
       title: "Explore City",

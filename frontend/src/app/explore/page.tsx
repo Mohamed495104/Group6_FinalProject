@@ -1,5 +1,20 @@
 "use client";
 
+/**
+ * Explore Page - Category-Based City Discovery
+ * Public page accessible to all users
+ * 
+ * Features:
+ * - Browse 8 different categories (Food, Parks, Culture, Nightlife, Shopping, etc.)
+ * - Advanced search functionality with real-time filtering
+ * - Sort options (Popular, Rating, Newest, Distance)
+ * - Featured spots showcase
+ * - Responsive card-based layout with hover effects
+ * - Filter panel with category and sort controls
+ * 
+ * Created by: Greeshma Prasad
+ */
+
 import React, { useState, useMemo } from 'react';
 import { Box } from "@mui/material";
 import Navbar from "@/components/Navbar/Navbar";
@@ -20,11 +35,10 @@ import {
   Close
 } from '@mui/icons-material';
 
-// Member 2: Explore Page Implementation
-// Created by: Greeshma Prasad
-// This component provides category-based exploration with search and filter functionality
-
-// Static data for categories - using theme colors
+/**
+ * Category Data Configuration
+ * Each category includes icon, description, color theme, and place count
+ */
 const categories = [
   {
     id: 'food',
