@@ -312,8 +312,7 @@ export default function ContactPage() {
                   </Typography>
                   <Typography variant="body2" color="text.secondary" lineHeight={1.7}>
                     This feature is coming soon! We're working on allowing users to save and organize 
-                    their favorite spots into custom collections. Stay tuned for updates by subscribing 
-                    to our newsletter.
+                    their favorite spots into custom collections. Check back regularly for updates.
                   </Typography>
                 </Card>
               </Grid>

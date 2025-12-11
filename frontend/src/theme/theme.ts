@@ -20,7 +20,7 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#1A73E8",   // City Blue - WCAG AA compliant (4.52:1 on white)
+            main: "#1A73E8",   // City Blue - WCAG AA compliant (4.52:1 on white, exceeds 4.5:1 minimum)
             dark: "#0d47a1",   // Darker blue for gradients and hover states
             light: "#4A90E2",  // Light blue for subtle accents
         },
