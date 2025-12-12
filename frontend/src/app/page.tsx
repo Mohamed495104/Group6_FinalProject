@@ -2,14 +2,26 @@
 
 import { Box, Button, Container, Typography, useTheme } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import ExploreIcon from "@mui/icons-material/Explore";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LandingPage() {
   const theme = useTheme();
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  // Redirect authenticated users to home page
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/home");
+    }
+  }, [user, loading, router]);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
@@ -178,12 +190,17 @@ export default function LandingPage() {
             sx={{
               flex: 1,
               textAlign: "center",
-              px: 2,
-              py: 4,
-              borderRadius: 2,
-              transition: "transform 0.3s ease",
+              px: 3,
+              py: 5,
+              borderRadius: 4,
+              backgroundColor: "#fff",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              border: "2px solid #f8f8f8",
+              transition: "all 0.3s ease",
               "&:hover": {
-                transform: "translateY(-8px)",
+                transform: "translateY(-12px)",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
+                borderColor: theme.palette.primary.main,
               },
             }}
           >
@@ -213,12 +230,17 @@ export default function LandingPage() {
             sx={{
               flex: 1,
               textAlign: "center",
-              px: 2,
-              py: 4,
-              borderRadius: 2,
-              transition: "transform 0.3s ease",
+              px: 3,
+              py: 5,
+              borderRadius: 4,
+              backgroundColor: "#fff",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              border: "2px solid #f8f8f8",
+              transition: "all 0.3s ease",
               "&:hover": {
-                transform: "translateY(-8px)",
+                transform: "translateY(-12px)",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
+                borderColor: theme.palette.secondary.main,
               },
             }}
           >
@@ -248,12 +270,17 @@ export default function LandingPage() {
             sx={{
               flex: 1,
               textAlign: "center",
-              px: 2,
-              py: 4,
-              borderRadius: 2,
-              transition: "transform 0.3s ease",
+              px: 3,
+              py: 5,
+              borderRadius: 4,
+              backgroundColor: "#fff",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              border: "2px solid #f8f8f8",
+              transition: "all 0.3s ease",
               "&:hover": {
-                transform: "translateY(-8px)",
+                transform: "translateY(-12px)",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
+                borderColor: theme.palette.primary.main,
               },
             }}
           >

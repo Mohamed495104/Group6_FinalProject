@@ -1,5 +1,20 @@
 "use client";
 
+/**
+ * Explore Page - Category-Based City Discovery
+ * Public page accessible to all users
+ * 
+ * Features:
+ * - Browse 8 different categories (Food, Parks, Culture, Nightlife, Shopping, etc.)
+ * - Advanced search functionality with real-time filtering
+ * - Sort options (Popular, Rating, Newest, Distance)
+ * - Featured spots showcase
+ * - Responsive card-based layout with hover effects
+ * - Filter panel with category and sort controls
+ * 
+ * Created by: Greeshma Prasad
+ */
+
 import React, { useState, useMemo } from 'react';
 import { Box } from "@mui/material";
 import Navbar from "@/components/Navbar/Navbar";
@@ -20,20 +35,20 @@ import {
   Close
 } from '@mui/icons-material';
 
-// Member 2: Explore Page Implementation
-// Created by: Greeshma Prasad
-// This component provides category-based exploration with search and filter functionality
-
-// Static data for categories - using theme colors
+/**
+ * Category Data Configuration
+ * Each category includes icon, description, color theme, and place count
+ */
 const categories = [
   {
     id: 'food',
     name: 'Food & Restaurants',
     icon: Restaurant,
     description: 'Discover the best dining experiences',
-    color: '#FF7043', // Secondary color
+    color: '#FF7043',
     count: 150,
-    subcategories: ['Fine Dining', 'Casual Eats', 'Street Food', 'Cafes']
+    subcategories: ['Fine Dining', 'Casual Eats', 'Street Food', 'Cafes'],
+    bannerImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=200&fit=crop&q=80'
   },
   {
     id: 'parks',
@@ -42,7 +57,8 @@ const categories = [
     description: 'Explore green spaces and outdoor areas',
     color: '#4ECDC4',
     count: 85,
-    subcategories: ['City Parks', 'Nature Trails', 'Beaches', 'Gardens']
+    subcategories: ['City Parks', 'Nature Trails', 'Beaches', 'Gardens'],
+    bannerImage: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&h=200&fit=crop&q=80'
   },
   {
     id: 'culture',
@@ -51,7 +67,8 @@ const categories = [
     description: 'Museums, galleries, and cultural sites',
     color: '#9B59B6',
     count: 120,
-    subcategories: ['Museums', 'Art Galleries', 'Theaters', 'Historical Sites']
+    subcategories: ['Museums', 'Art Galleries', 'Theaters', 'Historical Sites'],
+    bannerImage: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600&h=200&fit=crop&q=80'
   },
   {
     id: 'nightlife',
@@ -60,7 +77,8 @@ const categories = [
     description: 'Bars, clubs, and evening entertainment',
     color: '#F39C12',
     count: 95,
-    subcategories: ['Bars', 'Clubs', 'Live Music', 'Lounges']
+    subcategories: ['Bars', 'Clubs', 'Live Music', 'Lounges'],
+    bannerImage: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&h=200&fit=crop&q=80'
   },
   {
     id: 'shopping',
@@ -69,16 +87,18 @@ const categories = [
     description: 'Malls, boutiques, and markets',
     color: '#E74C3C',
     count: 110,
-    subcategories: ['Shopping Malls', 'Boutiques', 'Markets', 'Specialty Stores']
+    subcategories: ['Shopping Malls', 'Boutiques', 'Markets', 'Specialty Stores'],
+    bannerImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=200&fit=crop&q=80'
   },
   {
     id: 'entertainment',
     name: 'Entertainment',
     icon: LocalActivity,
     description: 'Movies, events, and activities',
-    color: '#1A73E8', // Primary color
+    color: '#1A73E8',
     count: 75,
-    subcategories: ['Cinemas', 'Events', 'Gaming', 'Sports']
+    subcategories: ['Cinemas', 'Events', 'Gaming', 'Sports'],
+    bannerImage: 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=200&fit=crop&q=80'
   },
   {
     id: 'wellness',
@@ -87,7 +107,8 @@ const categories = [
     description: 'Relaxation and self-care destinations',
     color: '#1ABC9C',
     count: 60,
-    subcategories: ['Spas', 'Yoga Studios', 'Wellness Centers', 'Meditation']
+    subcategories: ['Spas', 'Yoga Studios', 'Wellness Centers', 'Meditation'],
+    bannerImage: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=200&fit=crop&q=80'
   },
   {
     id: 'fitness',
@@ -96,7 +117,8 @@ const categories = [
     description: 'Gyms, sports facilities, and activities',
     color: '#E67E22',
     count: 80,
-    subcategories: ['Gyms', 'Sports Centers', 'Rock Climbing', 'Swimming']
+    subcategories: ['Gyms', 'Sports Centers', 'Rock Climbing', 'Swimming'],
+    bannerImage: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=200&fit=crop&q=80'
   }
 ];
 
@@ -111,7 +133,7 @@ const featuredSpots = [
 export default function ExplorePage() {
   const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState<typeof categories[0] | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState('popular');
 
@@ -145,7 +167,7 @@ export default function ExplorePage() {
     return result;
   }, [searchQuery, selectedCategory, sortBy]);
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = (category: typeof categories[0]) => {
     // Toggle category selection
     if (selectedCategory?.id === category.id) {
       setSelectedCategory(null);
@@ -167,83 +189,118 @@ export default function ExplorePage() {
       
       <div style={{ 
         minHeight: '100vh', 
-        backgroundColor: '#F8F9FA',
+        backgroundColor: '#F5F7FA',
         fontFamily: 'Inter, Roboto, sans-serif'
       }}>
-        {/* Hero Section */}
+        {/* Enhanced Hero Section with Premium Styling */}
         <div style={{
-          background: 'linear-gradient(135deg, #1A73E8 0%, #0d47a1 100%)',
+          background: 'linear-gradient(135deg, #1A73E8 0%, #0d47a1 50%, #1565C0 100%)',
           color: 'white',
-          padding: '60px 20px 80px',
-          textAlign: 'center'
+          padding: '80px 20px 100px',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden'
         }}>
-          <h1 style={{ 
-            fontSize: '2.2rem',
-            fontWeight: 700, 
-            margin: '0 0 16px',
-            textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-          }}>
-            Explore CitySphere
-          </h1>
-          <p style={{ 
-            fontSize: '1rem',
-            lineHeight: 1.6,
-            opacity: 0.95, 
-            maxWidth: '600px', 
-            margin: '0 auto 32px',
-            color: '#FFFFFF'
-          }}>
-            {user 
-              ? `Welcome back, ${user.displayName || 'Explorer'}! Discover amazing places in your city` 
-              : 'Discover amazing places, hidden gems, and unforgettable experiences'}
-          </p>
-
-          {/* Search Bar */}
+          {/* Decorative background elements */}
           <div style={{
-            maxWidth: '700px',
-            margin: '0 auto',
-            position: 'relative'
-          }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              backgroundColor: '#FFFFFF',
-              borderRadius: '10px',
-              padding: '8px 24px',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
+            position: 'absolute',
+            top: '-50px',
+            right: '-50px',
+            width: '300px',
+            height: '300px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.08)',
+            filter: 'blur(60px)'
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '-80px',
+            left: '-80px',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.05)',
+            filter: 'blur(80px)'
+          }} />
+          
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <h1 style={{ 
+              fontSize: '3rem',
+              fontWeight: 800, 
+              margin: '0 0 20px',
+              textShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              letterSpacing: '-0.02em'
             }}>
-              <Search style={{ color: '#4A4A4A', marginRight: '12px' }} />
-              <input
-                type="text"
-                placeholder="Search categories, places, or activities..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  flex: 1,
-                  border: 'none',
-                  outline: 'none',
-                  fontSize: '1rem',
-                  padding: '12px 0',
-                  backgroundColor: 'transparent',
-                  color: '#1E1E1E',
-                  fontFamily: 'Inter, Roboto, sans-serif'
-                }}
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
+              Explore CitySphere
+            </h1>
+            <p style={{ 
+              fontSize: '1.15rem',
+              lineHeight: 1.7,
+              opacity: 0.97, 
+              maxWidth: '700px', 
+              margin: '0 auto 40px',
+              color: '#FFFFFF',
+              fontWeight: 400
+            }}>
+              {user 
+                ? `Welcome back, ${user.displayName || 'Explorer'}! Discover amazing places in your city` 
+                : 'Discover amazing places, hidden gems, and unforgettable experiences'}
+            </p>
+
+            {/* Enhanced Search Bar with Premium Styling */}
+            <div style={{
+              maxWidth: '750px',
+              margin: '0 auto',
+              position: 'relative'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                backgroundColor: '#FFFFFF',
+                borderRadius: '16px',
+                padding: '12px 28px',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(10px)'
+              }}>
+                <Search style={{ color: '#1A73E8', marginRight: '16px', fontSize: '24px' }} />
+                <input
+                  type="text"
+                  placeholder="Search categories, places, or activities..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
-                    background: 'none',
+                      flex: 1,
                     border: 'none',
-                    cursor: 'pointer',
-                    padding: '4px',
-                    display: 'flex',
-                    alignItems: 'center'
+                    outline: 'none',
+                    fontSize: '1.05rem',
+                    padding: '14px 0',
+                    backgroundColor: 'transparent',
+                    color: '#1E1E1E',
+                    fontFamily: 'Inter, Roboto, sans-serif',
+                    fontWeight: 500
                   }}
-                >
-                  <Close style={{ color: '#4A4A4A', fontSize: '20px' }} />
-                </button>
-              )}
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: '6px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      borderRadius: '50%',
+                      transition: 'background 0.2s'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                  >
+                    <Close style={{ color: '#666', fontSize: '22px' }} />
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -504,41 +561,44 @@ export default function ExplorePage() {
           margin: '0 auto',
           padding: '40px 20px'
         }}>
-          {/* Featured Section - Only show when no filters active */}
+          {/* Enhanced Featured Section - Only show when no filters active */}
           {!searchQuery && !selectedCategory && (
-            <div style={{ marginBottom: '48px' }}>
+            <div style={{ marginBottom: '56px' }}>
               <h2 style={{ 
-                fontSize: '1.8rem',
-                fontWeight: 600, 
-                marginBottom: '24px',
-                color: '#1E1E1E'
+                fontSize: '2rem',
+                fontWeight: 700, 
+                marginBottom: '28px',
+                color: '#1E1E1E',
+                letterSpacing: '-0.02em'
               }}>
                 🌟 Featured This Week
               </h2>
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                gap: '20px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                gap: '24px'
               }}>
                 {featuredSpots.map((spot, idx) => (
                   <div
                     key={idx}
                     style={{
                       backgroundColor: '#FFFFFF',
-                      borderRadius: '10px',
-                      padding: '20px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                      borderRadius: '16px',
+                      padding: '24px',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
                       cursor: 'pointer',
-                      transition: 'transform 0.2s, box-shadow 0.2s',
-                      border: '1px solid #f0f0f0'
+                      transition: 'all 0.3s ease-in-out',
+                      border: '2px solid #f8f8f8'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)';
+                      e.currentTarget.style.transform = 'translateY(-8px)';
+                      e.currentTarget.style.boxShadow = '0 12px 28px rgba(0,0,0,0.15)';
+                      e.currentTarget.style.borderColor = '#1A73E8';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+                      e.currentTarget.style.borderColor = '#f8f8f8';
                     }}
                   >
                     <h3 style={{ 
@@ -671,83 +731,113 @@ export default function ExplorePage() {
                     onClick={() => handleCategoryClick(category)}
                     style={{
                       backgroundColor: '#FFFFFF',
-                      borderRadius: '10px',
-                      padding: '24px',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
                       cursor: 'pointer',
-                      transition: 'all 0.3s',
+                      transition: 'all 0.3s ease-in-out',
                       boxShadow: isSelected 
-                        ? `0 8px 24px ${category.color}40`
-                        : '0 2px 8px rgba(0,0,0,0.08)',
+                        ? `0 12px 32px ${category.color}40`
+                        : '0 4px 12px rgba(0,0,0,0.08)',
                       border: isSelected 
-                        ? `2px solid ${category.color}`
-                        : '2px solid transparent',
+                        ? `3px solid ${category.color}`
+                        : '3px solid transparent',
                       transform: isSelected ? 'scale(1.02)' : 'scale(1)'
                     }}
                     onMouseEnter={(e) => {
                       if (!isSelected) {
-                        e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.12)';
-                        e.currentTarget.style.transform = 'translateY(-4px)';
+                        e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.15)';
+                        e.currentTarget.style.transform = 'translateY(-8px)';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (!isSelected) {
-                        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
                         e.currentTarget.style.transform = 'translateY(0)';
                       }
                     }}
                   >
+                    {/* Banner Image with Gradient Overlay */}
                     <div style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: '10px',
-                      backgroundColor: category.color,
+                      position: 'relative',
+                      width: '100%',
+                      height: '140px',
+                      backgroundImage: `url(${category.bannerImage})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: '16px'
+                      alignItems: 'flex-end',
+                      padding: '16px'
                     }}>
-                      <Icon style={{ color: 'white', fontSize: '28px' }} />
+                      {/* Gradient overlay */}
+                      <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: `linear-gradient(to bottom, transparent 0%, ${category.color}CC 100%)`
+                      }} />
+                      
+                      {/* Icon badge */}
+                      <div style={{
+                        position: 'relative',
+                        zIndex: 1,
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '12px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                      }}>
+                        <Icon style={{ color: category.color, fontSize: '28px' }} />
+                      </div>
                     </div>
                     
-                    <h3 style={{ 
-                      fontSize: '1.25rem', 
-                      fontWeight: 600, 
-                      marginBottom: '8px',
-                      color: '#1E1E1E'
-                    }}>
-                      {category.name}
-                    </h3>
-                    
-                    <p style={{ 
-                      color: '#4A4A4A', 
-                      fontSize: '1rem', 
-                      marginBottom: '12px',
-                      lineHeight: 1.6
-                    }}>
-                      {category.description}
-                    </p>
-                    
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      paddingTop: '12px',
-                      borderTop: '1px solid #f0f0f0'
-                    }}>
-                      <span style={{ 
-                        fontSize: '0.9rem', 
-                        color: '#4A4A4A',
-                        fontWeight: 500
+                    {/* Content Section */}
+                    <div style={{ padding: '20px' }}>
+                      <h3 style={{ 
+                        fontSize: '1.25rem', 
+                        fontWeight: 700, 
+                        marginBottom: '8px',
+                        color: '#1E1E1E',
+                        letterSpacing: '-0.02em'
                       }}>
-                        {category.count} places
-                      </span>
-                      <span style={{
-                        color: category.color,
-                        fontWeight: 600,
-                        fontSize: '0.9rem'
+                        {category.name}
+                      </h3>
+                      
+                      <p style={{ 
+                        color: '#4A4A4A', 
+                        fontSize: '0.95rem', 
+                        marginBottom: '16px',
+                        lineHeight: 1.6
                       }}>
-                        Explore →
-                      </span>
+                        {category.description}
+                      </p>
+                      
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        paddingTop: '12px',
+                        borderTop: '2px solid #f5f5f5'
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.9rem', 
+                          color: '#666',
+                          fontWeight: 600
+                        }}>
+                          {category.count} places
+                        </span>
+                        <span style={{
+                          color: category.color,
+                          fontWeight: 700,
+                          fontSize: '0.9rem'
+                        }}>
+                          Explore →
+                        </span>
+                      </div>
                     </div>
                   </div>
                 );
