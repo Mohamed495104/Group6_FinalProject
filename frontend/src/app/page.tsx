@@ -190,12 +190,17 @@ export default function LandingPage() {
             sx={{
               flex: 1,
               textAlign: "center",
-              px: 2,
-              py: 4,
-              borderRadius: 2,
-              transition: "transform 0.3s ease",
+              px: 3,
+              py: 5,
+              borderRadius: 4,
+              backgroundColor: "#fff",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              border: "2px solid #f8f8f8",
+              transition: "all 0.3s ease",
               "&:hover": {
-                transform: "translateY(-8px)",
+                transform: "translateY(-12px)",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
+                borderColor: theme.palette.primary.main,
               },
             }}
           >
@@ -225,12 +230,17 @@ export default function LandingPage() {
             sx={{
               flex: 1,
               textAlign: "center",
-              px: 2,
-              py: 4,
-              borderRadius: 2,
-              transition: "transform 0.3s ease",
+              px: 3,
+              py: 5,
+              borderRadius: 4,
+              backgroundColor: "#fff",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              border: "2px solid #f8f8f8",
+              transition: "all 0.3s ease",
               "&:hover": {
-                transform: "translateY(-8px)",
+                transform: "translateY(-12px)",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
+                borderColor: theme.palette.secondary.main,
               },
             }}
           >
@@ -260,12 +270,17 @@ export default function LandingPage() {
             sx={{
               flex: 1,
               textAlign: "center",
-              px: 2,
-              py: 4,
-              borderRadius: 2,
-              transition: "transform 0.3s ease",
+              px: 3,
+              py: 5,
+              borderRadius: 4,
+              backgroundColor: "#fff",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              border: "2px solid #f8f8f8",
+              transition: "all 0.3s ease",
               "&:hover": {
-                transform: "translateY(-8px)",
+                transform: "translateY(-12px)",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
+                borderColor: theme.palette.primary.main,
               },
             }}
           >
