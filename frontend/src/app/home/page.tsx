@@ -8,6 +8,7 @@
  * - Quick access feature cards for main app sections
  * - Recommended categories based on user interests
  * - City insights and fun facts
+ * - Created by Mohamed Ijas
  */
 
 import { Box, Container, Typography, Grid, Card, CardContent, CardActionArea, useTheme } from "@mui/material";

@@ -8,6 +8,7 @@
  * - Contact information display
  * - Office hours
  * - Frequently Asked Questions (FAQ)
+ * - Created by Bipin
  */
 
 import { useState } from "react";
